@@ -29,7 +29,7 @@
     <Player
       {...player}
       index={i}
-      active={$game.activePlayer === player.name}
+      active={$game.activePlayer === i}
       players={$game.players.length}
     />
   {/each}

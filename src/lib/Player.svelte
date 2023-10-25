@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
   import { formatTime } from "./utils";
 
   export let time: number;
@@ -27,12 +28,23 @@
     : color} flex flex-col w-full justify-center items-center relative overflow-hidden"
   class:opacity-40={!active || eliminated}
 >
-  <span
-    class="z-10 font-bold text-white tabular-nums"
-    style="font-size: 16vw; padding-bottom: {7.5 / players}vh;"
+  <div
+    class="z-10 font-bold text-white tabular-nums flex"
+    style="font-size: 12vw; padding-bottom: {7.5 / players}vh;"
   >
-    {formatTime(time)}
-  </span>
+    {#each formatTime(time) as char}
+      <span class="relative flex items-center justify-center"
+        >{char}
+        {#if char === "6" || char === "9"}
+          <div
+            class="absolute bg-white rounded-full z-50"
+            style="width: 2vw; height: 2vw; bottom: 2vw"
+            transition:fade={{ duration: 200 }}
+          />
+        {/if}
+      </span>
+    {/each}
+  </div>
   <div
     class="absolute inset-0 font-bold text-white opacity-20 flex items-center justify-center"
     style="font-size: {330 / players}vh;"

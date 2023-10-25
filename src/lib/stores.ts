@@ -8,7 +8,7 @@ interface Player {
 
 interface Game {
   players: Player[];
-  activePlayer: string;
+  activePlayer: number;
   paused: boolean;
 }
 
@@ -27,21 +27,37 @@ export const createGameStore = ({
       time: initialTime,
       eliminated: false,
     })),
-    activePlayer: `Spieler 1`,
+    activePlayer: 0,
     paused: true,
   });
 
   const next = () => {
     console.log("next");
     update((game) => {
-      const activePlayerIndex = game.players.findIndex(
-        (player) => player.name === game.activePlayer
-      );
-      let next = (activePlayerIndex + 1) % game.players.length;
-      while (game.players[next].eliminated) {
-        next = (next + 1) % game.players.length;
+      let nextIndex = game.activePlayer;
+
+      if (game.activePlayer === 0) {
+        nextIndex = 1;
+      } else if (game.activePlayer % 2 !== 0) {
+        if (game.activePlayer === game.players.length - 1) {
+          nextIndex = players - 2;
+        } else {
+          if (nextIndex + 2 >= game.players.length) {
+            nextIndex += 1;
+          } else {
+            nextIndex += 2;
+          }
+        }
+      } else {
+        nextIndex -= 2;
       }
-      game.activePlayer = game.players[next].name;
+
+      if (game.players[nextIndex].eliminated) {
+        next();
+        return game;
+      }
+
+      game.activePlayer = nextIndex;
       return game;
     });
   };
@@ -49,10 +65,10 @@ export const createGameStore = ({
   const tick = () => {
     update((game) => {
       if (game.paused) return game;
-      const activePlayer = game.players.find(
-        (player) => player.name === game.activePlayer
-      );
+
+      const activePlayer = game.players[game.activePlayer];
       if (!activePlayer) return game;
+
       if (activePlayer.time <= 0) {
         activePlayer.eliminated = true;
         if (game.players.filter((player) => !player.eliminated).length === 1) {
@@ -63,7 +79,8 @@ export const createGameStore = ({
         }
         return game;
       }
-      activePlayer.time -= 1;
+
+      activePlayer.time--;
       return game;
     });
   };
