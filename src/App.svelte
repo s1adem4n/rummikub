@@ -41,6 +41,11 @@
           bind:value={players}
           class="w-full"
         />
+        {#if players >= 8}
+          <button on:click={() => players++}>
+            <Icon icon="fa-solid:plus" class="w-4 h-4" />
+          </button>
+        {/if}
       </div>
     </label>
     <label class="w-full" for="time">
@@ -72,12 +77,12 @@
       </button>
       Spieler einrichten
     </h1>
-    {#each $game.players as player}
+    {#each $game.players as player, i}
       <div
         class="flex flex-col w-full p-2 border border-gray-300 rounded-md gap-2"
       >
         <span>
-          {player.name}
+          Spieler {i + 1}
         </span>
         <label for="time">
           Zeit:

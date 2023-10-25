@@ -5,7 +5,7 @@
   export let time: number;
   export let eliminated: boolean;
   export let active: boolean;
-  export let index: number;
+  export let id: number;
   export let players: number;
 
   const colors = [
@@ -19,7 +19,7 @@
     "bg-emerald-500",
   ];
 
-  const color = colors[index % colors.length];
+  const color = colors[id % colors.length];
 </script>
 
 <div
@@ -30,15 +30,16 @@
 >
   <div
     class="z-10 font-bold text-white tabular-nums flex"
-    style="font-size: 12vw; padding-bottom: {7.5 / players}vh;"
+    style="font-size: min({150 / players}vh,20vw); padding-bottom: {7.5 /
+      players}vh;"
   >
     {#each formatTime(time) as char}
       <span class="relative flex items-center justify-center"
         >{char}
         {#if char === "6" || char === "9"}
           <div
-            class="absolute bg-white rounded-full z-50"
-            style="width: 2vw; height: 2vw; bottom: 2vw"
+            class="absolute bg-white rounded-full z-50 aspect-square"
+            style="bottom: 10%; width: 25%;"
             transition:fade={{ duration: 200 }}
           />
         {/if}
@@ -49,6 +50,6 @@
     class="absolute inset-0 font-bold text-white opacity-20 flex items-center justify-center"
     style="font-size: {330 / players}vh;"
   >
-    {index + 1}
+    {id + 1}
   </div>
 </div>

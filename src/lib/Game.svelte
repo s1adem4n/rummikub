@@ -1,10 +1,13 @@
 <script lang="ts">
-  import { type GameStore } from "./stores";
+  import { createSortedPlayersStore, type GameStore } from "./stores";
   import Player from "./Player.svelte";
   import { createEventDispatcher, onMount, setContext } from "svelte";
   import Icon from "@iconify/svelte";
-  import { fly } from "svelte/transition";
+  import { fly, fade } from "svelte/transition";
   export let game: GameStore;
+
+  let sortedPlayers = createSortedPlayersStore(game);
+  $: console.log($sortedPlayers);
 
   setContext("game", game);
 
@@ -18,26 +21,66 @@
   });
 </script>
 
-<svelte:window
+<button
+  class="relative h-full w-full grid grid-cols-2"
   on:click={() => {
+    console.log("click");
     game.next();
   }}
-/>
-
-<div class="relative h-full w-full grid grid-cols-2">
-  {#each $game.players as player, i}
+>
+  {#each $sortedPlayers as player}
     <Player
       {...player}
-      index={i}
-      active={$game.activePlayer === i}
+      active={$game.activePlayer === player.id}
       players={$game.players.length}
     />
   {/each}
 
+  {#if $game.paused}
+    <button
+      class="absolute z-50 inset-0 w-full bg-black/50 backdrop-blur-sm flex flex-col gap-12 justify-center items-center"
+      on:click={() => {
+        $game.paused = false;
+      }}
+      in:fade={{ duration: 200 }}
+      out:fade={{ duration: 200 }}
+    >
+      <button
+        class="bg-white aspect-square rounded-full flex items-center justify-center"
+        style="height: 15vh;"
+        on:click={() => {
+          game.reset();
+        }}
+        in:fly={{ y: window.innerHeight / 4, duration: 200 }}
+        out:fly={{ y: window.innerHeight / 4, duration: 200 }}
+      >
+        <Icon
+          icon="fluent:arrow-reset-24-filled"
+          class="w-2/3 h-2/3 text-green-500"
+        />
+      </button>
+      <button
+        class="bg-white aspect-square rounded-full flex items-center justify-center"
+        style="height: 15vh;"
+        on:click={() => {
+          console.log("exit");
+          eventDispatcher("exit");
+        }}
+        in:fly={{ y: window.innerHeight / 4, duration: 200 }}
+        out:fly={{ y: window.innerHeight / 4, duration: 200 }}
+      >
+        <Icon
+          icon="fa6-solid:plus"
+          class="rotate-45 w-2/3 h-2/3 text-red-500"
+        />
+      </button>
+    </button>
+  {/if}
+
   <button
-    class="top-1/2 left-1/2"
-    on:click={(e) => {
-      e.stopPropagation();
+    class="pause"
+    style="width: {$game.players.length % 2 === 0 ? '15vh' : '8vw'};"
+    on:click={() => {
       $game.paused = !$game.paused;
     }}
   >
@@ -47,27 +90,10 @@
       <Icon icon="fa-solid:pause" class="w-1/2 h-1/2 text-sky-500" />
     {/if}
   </button>
-  {#if $game.paused}
-    <button
-      class="top-1/4 left-1/2"
-      on:click={(e) => {
-        e.stopPropagation();
-        console.log("exit");
-        eventDispatcher("exit");
-      }}
-      in:fly={{ y: window.innerHeight / 4, duration: 200 }}
-      out:fly={{ y: window.innerHeight / 4, duration: 200 }}
-    >
-      <!-- cancel icon (X) cross -->
-      <Icon icon="fa6-solid:plus" class="rotate-45 w-2/3 h-2/3 text-red-500" />
-    </button>
-  {/if}
-</div>
+</button>
 
 <style lang="postcss">
-  button {
-    width: max(10vw, 5rem);
-    height: max(10vw, 5rem);
-    @apply absolute -translate-x-1/2 -translate-y-1/2 bg-white rounded-full flex items-center justify-center;
+  button.pause {
+    @apply absolute -translate-x-1/2 -translate-y-1/2 bg-white rounded-full flex items-center justify-center aspect-square top-1/2 left-1/2;
   }
 </style>
