@@ -1,0 +1,42 @@
+<script lang="ts">
+  import { formatTime } from "./utils";
+
+  export let time: number;
+  export let eliminated: boolean;
+  export let active: boolean;
+  export let index: number;
+  export let players: number;
+
+  const colors = [
+    "bg-red-500",
+    "bg-blue-500",
+    "bg-green-500",
+    "bg-yellow-500",
+    "bg-purple-500",
+    "bg-pink-500",
+    "bg-indigo-500",
+    "bg-emerald-500",
+  ];
+
+  const color = colors[index % colors.length];
+</script>
+
+<div
+  class="{eliminated
+    ? 'bg-gray-500'
+    : color} flex flex-col w-full justify-center items-center relative overflow-hidden"
+  class:opacity-40={!active || eliminated}
+>
+  <span
+    class="z-10 font-bold text-white tabular-nums"
+    style="font-size: 16vw; padding-bottom: {7.5 / players}vh;"
+  >
+    {formatTime(time)}
+  </span>
+  <div
+    class="absolute inset-0 font-bold text-white opacity-20 flex items-center justify-center"
+    style="font-size: {330 / players}vh;"
+  >
+    {index + 1}
+  </div>
+</div>
