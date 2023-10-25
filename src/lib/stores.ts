@@ -30,7 +30,7 @@ export const createGameStore = ({
     })),
     sortedPlayers: [],
     activePlayer: 0,
-    paused: true,
+    paused: false,
   });
 
   const next = () => {
