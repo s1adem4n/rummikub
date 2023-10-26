@@ -39,7 +39,8 @@
   {#if $game.paused}
     <button
       class="absolute z-50 inset-0 w-full bg-black/50 backdrop-blur-sm flex flex-col gap-12 justify-center items-center"
-      on:click={() => {
+      on:click={(e) => {
+        e.stopPropagation();
         $game.paused = false;
       }}
       in:fade={{ duration: 200 }}
@@ -79,8 +80,12 @@
 
   <button
     class="pause"
-    style="width: {$game.players.length % 2 === 0 ? '15vh' : '8vw'};"
-    on:click={() => {
+    style="width: {$game.players.length % 4 === 0 ||
+    ($game.players.length + 1) % 4 === 0
+      ? '15vh'
+      : '8vw'};"
+    on:click={(e) => {
+      e.stopPropagation();
       $game.paused = !$game.paused;
     }}
   >
