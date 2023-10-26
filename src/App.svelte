@@ -43,6 +43,7 @@
         />
         {#if players >= 8}
           <button on:click={() => players++}>
+            <span class="sr-only">plus</span>
             <Icon icon="fa-solid:plus" class="w-4 h-4" />
           </button>
         {/if}
@@ -54,7 +55,7 @@
       <TimeInput bind:time={initialTime} />
     </label>
     <button
-      class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md w-full"
+      class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md w-full"
       on:click={() => {
         step = 1;
         game = createGameStore({
@@ -92,7 +93,7 @@
     {/each}
     <button
       on:click={() => (playing = true)}
-      class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md w-full"
+      class="bg-blue-6 hover:bg-blue-700 text-white px-4 py-2 rounded-md w-full"
     >
       Start
     </button>

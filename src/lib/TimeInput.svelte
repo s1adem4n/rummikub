@@ -14,7 +14,7 @@
 
 <div class="flex items-center gap-1">
   <div
-    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-500 divide-x divide-gray-300 h-8"
+    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-8"
   >
     <button
       on:click={() => {
@@ -23,6 +23,7 @@
         }
       }}
     >
+      <span class="sr-only"> minus </span>
       <Icon icon="ic:round-minus" class="w-6 h-6" />
     </button>
     <input
@@ -53,12 +54,13 @@
         }
       }}
     >
+      <span class="sr-only">plus</span>
       <Icon icon="ic:round-plus" class="w-6 h-6" />
     </button>
   </div>
   <span class="text-2xl">:</span>
   <div
-    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-500 divide-x divide-gray-300 h-8"
+    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-8"
   >
     <button
       on:click={() => {
@@ -67,6 +69,7 @@
         }
       }}
     >
+      <span class="sr-only"> minus </span>
       <Icon icon="ic:round-minus" class="w-6 h-6" />
     </button>
     <input
@@ -97,6 +100,7 @@
         }
       }}
     >
+      <span class="sr-only"> plus </span>
       <Icon icon="ic:round-plus" class="w-6 h-6" />
     </button>
   </div>
