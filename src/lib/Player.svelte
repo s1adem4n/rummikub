@@ -25,7 +25,7 @@
 <div
   class="{eliminated
     ? 'bg-gray-500'
-    : color} flex flex-col w-full justify-center items-center relative overflow-hidden"
+    : color} flex flex-col w-full h-full justify-center items-center relative overflow-hidden"
   class:opacity-40={!active || eliminated}
 >
   <div
