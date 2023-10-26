@@ -7,7 +7,6 @@
   export let game: GameStore;
 
   let sortedPlayers = createSortedPlayersStore(game);
-  $: console.log($sortedPlayers);
 
   setContext("game", game);
 

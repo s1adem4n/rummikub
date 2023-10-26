@@ -1,4 +1,4 @@
-import { get, writable, derived } from "svelte/store";
+import { writable, derived } from "svelte/store";
 
 interface Player {
   id: number;
@@ -34,7 +34,6 @@ export const createGameStore = ({
   });
 
   const next = () => {
-    console.log("next");
     update((game) => {
       let nextIndex = (game.activePlayer + 1) % game.players.length;
 
@@ -97,7 +96,6 @@ export const createSortedPlayersStore = (gameStore: GameStore) => {
   return derived(gameStore, ($game) => {
     const players = $game.players.length;
     const sortedPlayers: Player[] = [];
-    console.log(players, sortedPlayers);
     const map = [0];
 
     // TODO: this is very ugly, but no brain :/
