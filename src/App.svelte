@@ -72,7 +72,7 @@
   <div
     class="flex flex-col gap-2 items-center justify-center min-h-full max-w-md mx-auto p-4"
   >
-    <h1 class="text-4xl font-bold mb-4 flex justify-end gap-2">
+    <h1 class="text-4xl font-bold mb-4 flex w-full items-end gap-2">
       <button on:click={() => (step = 0)}>
         <Icon icon="fa6-regular:circle-left" class="w-8 h-8" />
       </button>
