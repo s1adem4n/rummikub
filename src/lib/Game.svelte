@@ -86,7 +86,7 @@
     style="width: {$game.players.length % 4 === 0 ||
     ($game.players.length + 1) % 4 === 0
       ? '15dvh'
-      : '8vw'};"
+      : '7vw'};"
     on:click={(e) => {
       e.stopPropagation();
       $game.paused = !$game.paused;

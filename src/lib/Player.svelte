@@ -34,16 +34,7 @@
       players}dvh;"
   >
     {#each formatTime(time) as char}
-      <span class="relative flex items-center justify-center drop-shadow-lg"
-        >{char}
-        {#if char === "6" || char === "9"}
-          <div
-            class="absolute bg-white rounded-full z-50 aspect-square"
-            style="bottom: 10%; width: 25%;"
-            transition:fade={{ duration: 200 }}
-          />
-        {/if}
-      </span>
+      <span class="drop-shadow-lg">{char} </span>
     {/each}
   </div>
   <div
