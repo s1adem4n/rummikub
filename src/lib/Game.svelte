@@ -34,13 +34,12 @@
 
   {#if $game.paused}
     <button
-      class="absolute z-50 inset-0 w-full bg-black/50 backdrop-blur-sm flex flex-col gap-12 justify-center items-center"
+      class="absolute z-50 inset-0 w-full bg-black/50 backdrop-blur-sm flex flex-col sm:flex-row gap-12 justify-center items-center"
       on:click={(e) => {
         e.stopPropagation();
         $game.paused = false;
       }}
-      in:fade={{ duration: 200 }}
-      out:fade={{ duration: 200 }}
+      transition:fade={{ duration: 200 }}
     >
       <button
         class="bg-white aspect-square rounded-full flex items-center justify-center"
@@ -48,8 +47,7 @@
         on:click={() => {
           game.reset();
         }}
-        in:fly={{ y: window.innerHeight / 4, duration: 200 }}
-        out:fly={{ y: window.innerHeight / 4, duration: 200 }}
+        transition:fly={{ y: 400, duration: 200 }}
       >
         <Icon
           icon="fluent:arrow-reset-24-filled"
@@ -60,11 +58,16 @@
         class="bg-white aspect-square rounded-full flex items-center justify-center"
         style="height: 15dvh;"
         on:click={() => {
-          console.log("exit");
-          eventDispatcher("exit");
+          game.reset();
         }}
-        in:fly={{ y: window.innerHeight / 4, duration: 200 }}
-        out:fly={{ y: window.innerHeight / 4, duration: 200 }}
+        transition:fly={{ y: 400, duration: 200 }}
+      >
+        <Icon icon="fa-solid:play" class="w-1/2 h-1/2 text-green-500" />
+      </button>
+      <button
+        class="bg-white aspect-square rounded-full flex items-center justify-center"
+        style="height: 15dvh;"
+        transition:fly={{ y: 400, duration: 200 }}
       >
         <Icon
           icon="fa6-solid:plus"
@@ -85,11 +88,7 @@
       $game.paused = !$game.paused;
     }}
   >
-    {#if $game.paused}
-      <Icon icon="fa-solid:play" class="w-1/2 h-1/2" />
-    {:else}
-      <Icon icon="fa-solid:pause" class="w-1/2 h-1/2" />
-    {/if}
+    <Icon icon="fa-solid:pause" class="w-1/2 h-1/2" />
   </button>
 </button>
 
