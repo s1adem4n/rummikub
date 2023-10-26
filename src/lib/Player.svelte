@@ -30,8 +30,8 @@
 >
   <div
     class="z-10 font-bold text-white tabular-nums flex"
-    style="font-size: min({150 / players}vh,20vw); padding-bottom: {7.5 /
-      players}vh;"
+    style="font-size: min({150 / players}dvh,20vw); padding-bottom: {7.5 /
+      players}dvh;"
   >
     {#each formatTime(time) as char}
       <span class="relative flex items-center justify-center"
@@ -48,7 +48,7 @@
   </div>
   <div
     class="absolute inset-0 font-bold text-white opacity-20 flex items-center justify-center"
-    style="font-size: {330 / players}vh;"
+    style="font-size: {330 / players}dvh;"
   >
     {id + 1}
   </div>

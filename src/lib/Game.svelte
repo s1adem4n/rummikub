@@ -21,13 +21,9 @@
   });
 </script>
 
-<button
-  class="relative h-full w-full grid grid-cols-2"
-  on:click={() => {
-    console.log("click");
-    game.next();
-  }}
->
+<svelte:window on:keydown={game.next} />
+
+<button class="relative h-full w-full grid grid-cols-2" on:click={game.next}>
   {#each $sortedPlayers as player}
     <Player
       {...player}
@@ -48,7 +44,7 @@
     >
       <button
         class="bg-white aspect-square rounded-full flex items-center justify-center"
-        style="height: 15vh;"
+        style="height: 15dvh;"
         on:click={() => {
           game.reset();
         }}
@@ -62,7 +58,7 @@
       </button>
       <button
         class="bg-white aspect-square rounded-full flex items-center justify-center"
-        style="height: 15vh;"
+        style="height: 15dvh;"
         on:click={() => {
           console.log("exit");
           eventDispatcher("exit");
@@ -82,7 +78,7 @@
     class="pause text-gray-800"
     style="width: {$game.players.length % 4 === 0 ||
     ($game.players.length + 1) % 4 === 0
-      ? '15vh'
+      ? '15dvh'
       : '8vw'};"
     on:click={(e) => {
       e.stopPropagation();
