@@ -8,28 +8,29 @@
   export let players: number;
 
   const colors = [
-    "bg-red-500",
-    "bg-blue-500",
-    "bg-green-500",
-    "bg-yellow-500",
-    "bg-purple-500",
-    "bg-pink-500",
-    "bg-indigo-500",
-    "bg-emerald-500",
-    "bg-teal-500",
-    "bg-fuchsia-500",
-    "bg-violet-500",
-    "bg-rose-500",
+    "#ef4444",
+    "#3b82f6",
+    "#22c55e",
+    "#eab308",
+    "#a855f7",
+    "#ec4899",
+    "#6366f1",
+    "#10b981",
+    "#d946ef",
+    "#14b8a6",
+    "#8b5cf6",
+    "#f43f5e",
   ];
 
   const color = colors[id % colors.length];
 </script>
 
 <div
-  class="{eliminated
-    ? 'bg-gray-500'
-    : color} flex flex-col w-full h-full justify-center items-center relative overflow-hidden"
-  style="transition: opacity 400ms; opacity: {!active || eliminated ? 0.4 : 1};"
+  class="{eliminated &&
+    'bg-gray-500'} flex flex-col w-full h-full justify-center items-center relative overflow-hidden"
+  style="transition: opacity 400ms; opacity: {!active || eliminated
+    ? 0.4
+    : 1}; background-color: {color}"
 >
   <div
     class="z-10 font-bold text-white tabular-nums flex"

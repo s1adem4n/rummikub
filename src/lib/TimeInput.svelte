@@ -22,6 +22,7 @@
           minutes--;
         }
       }}
+      class="h-full w-6 flex items-center justify-center"
     >
       <span class="sr-only"> minus </span>
       <Minus class="w-4 h-4" />
@@ -45,7 +46,7 @@
         }
       }}
       bind:value={minutes}
-      class="w-8 text-center appearance-none focus:outline-none rounded-none"
+      class="w-8 text-center focus:outline-none rounded-none"
     />
     <button
       on:click={() => {
@@ -53,6 +54,7 @@
           minutes++;
         }
       }}
+      class="h-full w-6 flex items-center justify-center"
     >
       <span class="sr-only"> minus </span>
       <Plus class="w-4 h-4" />
@@ -68,6 +70,7 @@
           seconds--;
         }
       }}
+      class="h-full w-6 flex items-center justify-center"
     >
       <span class="sr-only"> minus </span>
       <Minus class="w-4 h-4" />
@@ -91,7 +94,7 @@
         }
       }}
       bind:value={seconds}
-      class="w-8 text-center appearance-none rounded-none focus:outline-none"
+      class="w-8 text-center rounded-none focus:outline-none"
     />
     <button
       on:click={() => {
@@ -99,26 +102,10 @@
           seconds++;
         }
       }}
+      class="h-full w-6 flex items-center justify-center"
     >
       <span class="sr-only"> minus </span>
       <Plus class="w-4 h-4" />
     </button>
   </div>
 </div>
-
-<style lang="postcss">
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  input[type="number"] {
-    appearance: textfield;
-    -moz-appearance: textfield;
-  }
-
-  button {
-    @apply h-full w-6 flex items-center justify-center;
-  }
-</style>
