@@ -3,6 +3,7 @@
   import TimeInput from "$lib/TimeInput.svelte";
   import { createGameStore, type GameStore } from "$lib/stores";
   import Icon from "@iconify/svelte";
+  import { fade, fly } from "svelte/transition";
 
   let playing = false;
   let initialTime = 120;
@@ -18,16 +19,24 @@
 </script>
 
 {#if playing}
-  <Game
-    {game}
-    on:exit={() => {
-      step = 0;
-      playing = false;
-    }}
-  />
+  <div
+    class="h-full w-full"
+    in:fly={{ x: 200, delay: 200 }}
+    out:fly={{ x: -200, duration: 200 }}
+  >
+    <Game
+      {game}
+      on:exit={() => {
+        step = 0;
+        playing = false;
+      }}
+    />
+  </div>
 {:else if step === 0}
   <div
     class="flex flex-col gap-2 items-center justify-center min-h-full max-w-md mx-auto p-4"
+    in:fly={{ x: 200, delay: 200 }}
+    out:fly={{ x: -200, duration: 200 }}
   >
     <h1 class="text-4xl font-bold mb-4">Spiele Timer</h1>
     <label class="w-full">
@@ -71,6 +80,8 @@
 {:else if step === 1}
   <div
     class="flex flex-col gap-2 items-center justify-center min-h-full max-w-md mx-auto p-4"
+    in:fly={{ x: 200, delay: 200 }}
+    out:fly={{ x: -200, duration: 200 }}
   >
     <h1 class="text-4xl font-bold mb-4 flex w-full items-end gap-2">
       <button on:click={() => (step = 0)}>
