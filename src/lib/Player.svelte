@@ -26,7 +26,7 @@
   class="{eliminated
     ? 'bg-gray-500'
     : color} flex flex-col w-full h-full justify-center items-center relative overflow-hidden"
-  class:opacity-40={!active || eliminated}
+  style="transition: opacity 300ms; opacity: {!active || eliminated ? 0.4 : 1};"
 >
   <div
     class="z-10 font-bold text-white tabular-nums flex"
