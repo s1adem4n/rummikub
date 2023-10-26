@@ -44,16 +44,17 @@
       <button
         class="bg-white aspect-square rounded-full flex items-center justify-center"
         style="height: 15dvh;"
-        on:click={() => {
-          game.reset();
-        }}
         transition:fly={{ y: 400, duration: 200 }}
+        on:click={() => {
+          eventDispatcher("exit");
+        }}
       >
         <Icon
-          icon="fluent:arrow-reset-24-filled"
-          class="w-2/3 h-2/3 text-gray-800"
+          icon="fa6-solid:plus"
+          class="rotate-45 w-2/3 h-2/3 text-red-500"
         />
       </button>
+
       <button
         class="bg-white aspect-square rounded-full flex items-center justify-center"
         style="height: 15dvh;"
@@ -67,11 +68,14 @@
       <button
         class="bg-white aspect-square rounded-full flex items-center justify-center"
         style="height: 15dvh;"
+        on:click={() => {
+          game.reset();
+        }}
         transition:fly={{ y: 400, duration: 200 }}
       >
         <Icon
-          icon="fa6-solid:plus"
-          class="rotate-45 w-2/3 h-2/3 text-red-500"
+          icon="fluent:arrow-reset-24-filled"
+          class="w-2/3 h-2/3 text-gray-800"
         />
       </button>
     </button>
