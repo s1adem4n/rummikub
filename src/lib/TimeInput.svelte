@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Icon from "@iconify/svelte";
-  import { onMount } from "svelte";
+  import Minus from "virtual:icons/fa6-solid/minus";
+  import Plus from "virtual:icons/fa6-solid/plus";
 
   export let time: number;
 
@@ -24,7 +24,7 @@
       }}
     >
       <span class="sr-only"> minus </span>
-      <Icon icon="ic:round-minus" class="w-6 h-6" />
+      <Minus class="w-4 h-4" />
     </button>
     <input
       type="number"
@@ -54,8 +54,8 @@
         }
       }}
     >
-      <span class="sr-only">plus</span>
-      <Icon icon="ic:round-plus" class="w-6 h-6" />
+      <span class="sr-only"> minus </span>
+      <Plus class="w-4 h-4" />
     </button>
   </div>
   <span class="text-2xl">:</span>
@@ -70,7 +70,7 @@
       }}
     >
       <span class="sr-only"> minus </span>
-      <Icon icon="ic:round-minus" class="w-6 h-6" />
+      <Minus class="w-4 h-4" />
     </button>
     <input
       type="number"
@@ -100,13 +100,13 @@
         }
       }}
     >
-      <span class="sr-only"> plus </span>
-      <Icon icon="ic:round-plus" class="w-6 h-6" />
+      <span class="sr-only"> minus </span>
+      <Plus class="w-4 h-4" />
     </button>
   </div>
 </div>
 
-<style>
+<style lang="postcss">
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -116,5 +116,9 @@
   input[type="number"] {
     appearance: textfield;
     -moz-appearance: textfield;
+  }
+
+  button {
+    @apply h-full w-6 flex items-center justify-center;
   }
 </style>

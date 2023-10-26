@@ -2,8 +2,12 @@
   import { createSortedPlayersStore, type GameStore } from "./stores";
   import Player from "./Player.svelte";
   import { createEventDispatcher, onMount, setContext } from "svelte";
-  import Icon from "@iconify/svelte";
   import { fly, fade } from "svelte/transition";
+  import Plus from "virtual:icons/fa6-solid/plus";
+  import Play from "virtual:icons/fa-solid/play";
+  import Pause from "virtual:icons/fa-solid/pause";
+  import Reset from "virtual:icons/fluent/arrow-reset-24-filled";
+
   export let game: GameStore;
 
   let sortedPlayers = createSortedPlayersStore(game);
@@ -48,10 +52,7 @@
           eventDispatcher("exit");
         }}
       >
-        <Icon
-          icon="fa6-solid:plus"
-          class="rotate-45 w-2/3 h-2/3 text-red-500"
-        />
+        <Plus class="rotate-45 w-2/3 h-2/3 text-red-500" />
       </button>
 
       <button
@@ -62,7 +63,7 @@
         }}
         transition:fly={{ y: 400, duration: 200 }}
       >
-        <Icon icon="fa-solid:play" class="w-1/2 h-1/2 text-green-500" />
+        <Play class="w-1/2 h-1/2 text-green-500" />
       </button>
       <button
         class="bg-white aspect-square rounded-full flex items-center justify-center"
@@ -72,10 +73,7 @@
         }}
         transition:fly={{ y: 400, duration: 200 }}
       >
-        <Icon
-          icon="fluent:arrow-reset-24-filled"
-          class="w-2/3 h-2/3 text-gray-800"
-        />
+        <Reset class="w-2/3 h-2/3 text-gray-800" />
       </button>
     </button>
   {/if}
@@ -91,6 +89,6 @@
       $game.paused = !$game.paused;
     }}
   >
-    <Icon icon="fa-solid:pause" class="w-1/2 h-1/2" />
+    <Pause class="w-1/2 h-1/2" />
   </button>
 </button>

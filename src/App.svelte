@@ -2,7 +2,8 @@
   import Game from "$lib/Game.svelte";
   import TimeInput from "$lib/TimeInput.svelte";
   import { createGameStore, type GameStore } from "$lib/stores";
-  import Icon from "@iconify/svelte";
+  import Plus from "virtual:icons/fa-solid/plus";
+  import CircleLeft from "virtual:icons/fa6-regular/circle-left";
   import { fly } from "svelte/transition";
 
   let playing = false;
@@ -52,7 +53,7 @@
         {#if players >= 8}
           <button on:click={() => players++}>
             <span class="sr-only">plus</span>
-            <Icon icon="fa-solid:plus" class="w-4 h-4" />
+            <Plus class="w-4 h-4" />
           </button>
         {/if}
       </div>
@@ -83,7 +84,7 @@
   >
     <h1 class="text-4xl font-bold mb-4 flex w-full items-end gap-2">
       <button on:click={() => (step = 0)}>
-        <Icon icon="fa6-regular:circle-left" class="w-8 h-8" />
+        <CircleLeft class="w-8 h-8" />
       </button>
       Spieler einrichten
     </h1>
