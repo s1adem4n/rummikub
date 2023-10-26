@@ -98,7 +98,7 @@ export const createSortedPlayersStore = (gameStore: GameStore) => {
     const sortedPlayers: Player[] = [];
     const map = [0];
 
-    // TODO: this is very ugly, but no brain :/
+    // TODO: this is very ugly, but no brain for this sh*t :/
     while (map.length < players) {
       const current = map.at(-1)!;
       let nextIndex = current;
