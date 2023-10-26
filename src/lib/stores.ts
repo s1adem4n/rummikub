@@ -93,35 +93,6 @@ export const createGameStore = ({
   };
 };
 
-/* 
-0 => 0
-1 => 1
-2 => 3
-3 => 5
-4 => 7
-5 => 6
-6 => 4
-7 => 2
-
-0 => 0
-1 => 1
-2 => 3
-3 => 2
-
-0 => 0
-1 => 1
-2 => 3
-3 => 4
-4 => 2
-
-0 => 0
-1 => 1
-2 => 3
-3 => 5
-4 => 7
-5 => 6
-6 => 2
-*/
 export const createSortedPlayersStore = (gameStore: GameStore) => {
   return derived(gameStore, ($game) => {
     const players = $game.players.length;
@@ -129,6 +100,7 @@ export const createSortedPlayersStore = (gameStore: GameStore) => {
     console.log(players, sortedPlayers);
     const map = [0];
 
+    // TODO: this is very ugly, but no brain :/
     while (map.length < players) {
       const current = map.at(-1)!;
       let nextIndex = current;
