@@ -82,7 +82,7 @@
   {/if}
 
   <button
-    class="pause text-gray-800 shadow-lg"
+    class="absolute -translate-x-1/2 -translate-y-1/2 bg-white rounded-full flex items-center justify-center aspect-square top-1/2 left-1/2 text-gray-800 shadow-lg"
     style="width: {$game.players.length % 4 === 0 ||
     ($game.players.length + 1) % 4 === 0
       ? '15dvh'
@@ -95,9 +95,3 @@
     <Icon icon="fa-solid:pause" class="w-1/2 h-1/2" />
   </button>
 </button>
-
-<style lang="postcss">
-  button.pause {
-    @apply absolute -translate-x-1/2 -translate-y-1/2 bg-white rounded-full flex items-center justify-center aspect-square top-1/2 left-1/2;
-  }
-</style>
