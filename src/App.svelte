@@ -3,11 +3,10 @@
   import TimeInput from "$lib/TimeInput.svelte";
   import { createGameStore, type GameStore } from "$lib/stores";
   import Icon from "@iconify/svelte";
-  import { fade, fly } from "svelte/transition";
+  import { fly } from "svelte/transition";
 
   let playing = false;
   let initialTime = 120;
-  $: console.log(initialTime);
   let players = 4;
 
   let step = 0;
@@ -71,7 +70,6 @@
           players,
           initialTime,
         });
-        console.log($game);
       }}
     >
       Weiter
