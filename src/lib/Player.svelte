@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fade } from "svelte/transition";
   import { formatTime } from "./utils";
 
   export let time: number;
