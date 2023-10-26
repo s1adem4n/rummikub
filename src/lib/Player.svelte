@@ -34,7 +34,7 @@
       players}dvh;"
   >
     {#each formatTime(time) as char}
-      <span class="relative flex items-center justify-center"
+      <span class="relative flex items-center justify-center drop-shadow-lg"
         >{char}
         {#if char === "6" || char === "9"}
           <div

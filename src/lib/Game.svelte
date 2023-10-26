@@ -75,7 +75,7 @@
   {/if}
 
   <button
-    class="pause text-gray-800"
+    class="pause text-gray-800 shadow-lg"
     style="width: {$game.players.length % 4 === 0 ||
     ($game.players.length + 1) % 4 === 0
       ? '15dvh'
