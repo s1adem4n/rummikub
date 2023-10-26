@@ -57,7 +57,7 @@
       >
         <Icon
           icon="fluent:arrow-reset-24-filled"
-          class="w-2/3 h-2/3 text-green-500"
+          class="w-2/3 h-2/3 text-gray-800"
         />
       </button>
       <button
@@ -79,7 +79,7 @@
   {/if}
 
   <button
-    class="pause"
+    class="pause text-gray-800"
     style="width: {$game.players.length % 4 === 0 ||
     ($game.players.length + 1) % 4 === 0
       ? '15vh'
@@ -90,9 +90,9 @@
     }}
   >
     {#if $game.paused}
-      <Icon icon="fa-solid:play" class="w-1/2 h-1/2 text-sky-500" />
+      <Icon icon="fa-solid:play" class="w-1/2 h-1/2" />
     {:else}
-      <Icon icon="fa-solid:pause" class="w-1/2 h-1/2 text-sky-500" />
+      <Icon icon="fa-solid:pause" class="w-1/2 h-1/2" />
     {/if}
   </button>
 </button>
