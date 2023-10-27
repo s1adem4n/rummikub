@@ -1,7 +1,7 @@
 {
   "name": "Rummikub",
   "short_name": "Rummikub",
-  "theme_color": "#3b82f6",
+  "theme_color": "#2563eb",
   "background_color": "#f9fafb",
   "display": "standalone",
   "orientation": "portrait",
