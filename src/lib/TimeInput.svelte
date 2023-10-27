@@ -14,7 +14,7 @@
 
 <div class="flex items-center gap-1">
   <div
-    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-8"
+    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-[50px]"
   >
     <button
       on:click={() => {
@@ -22,7 +22,7 @@
           minutes--;
         }
       }}
-      class="h-full w-6 flex items-center justify-center"
+      class="h-full w-12 flex items-center justify-center"
     >
       <span class="sr-only"> minus </span>
       <Minus class="w-4 h-4" />
@@ -46,7 +46,7 @@
         }
       }}
       bind:value={minutes}
-      class="w-8 text-center focus:outline-none rounded-none"
+      class="w-12 text-center focus:outline-none rounded-none"
     />
     <button
       on:click={() => {
@@ -54,7 +54,7 @@
           minutes++;
         }
       }}
-      class="h-full w-6 flex items-center justify-center"
+      class="h-full w-12 flex items-center justify-center"
     >
       <span class="sr-only"> minus </span>
       <Plus class="w-4 h-4" />
@@ -62,7 +62,7 @@
   </div>
   <span class="text-2xl">:</span>
   <div
-    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-8"
+    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-[50px]"
   >
     <button
       on:click={() => {
@@ -70,7 +70,7 @@
           seconds--;
         }
       }}
-      class="h-full w-6 flex items-center justify-center"
+      class="h-full w-12 flex items-center justify-center"
     >
       <span class="sr-only"> minus </span>
       <Minus class="w-4 h-4" />
@@ -94,7 +94,7 @@
         }
       }}
       bind:value={seconds}
-      class="w-8 text-center rounded-none focus:outline-none"
+      class="w-12 text-center rounded-none focus:outline-none"
     />
     <button
       on:click={() => {
@@ -102,7 +102,7 @@
           seconds++;
         }
       }}
-      class="h-full w-6 flex items-center justify-center"
+      class="h-full w-12 flex items-center justify-center"
     >
       <span class="sr-only"> minus </span>
       <Plus class="w-4 h-4" />

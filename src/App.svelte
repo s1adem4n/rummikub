@@ -88,6 +88,12 @@
       </button>
       Spieler einrichten
     </h1>
+    <button
+      on:click={() => (playing = true)}
+      class="bg-blue-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md w-full"
+    >
+      Start
+    </button>
     {#each $game.players as player, i}
       <div
         class="flex flex-col w-full p-2 border border-gray-300 rounded-md gap-2"
