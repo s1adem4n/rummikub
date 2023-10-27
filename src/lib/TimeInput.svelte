@@ -14,7 +14,7 @@
 
 <div class="flex items-center gap-1">
   <div
-    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-[50px]"
+    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-[42px]"
   >
     <button
       on:click={() => {
@@ -62,7 +62,7 @@
   </div>
   <span class="text-2xl">:</span>
   <div
-    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-[50px]"
+    class="flex border border-gray-300 rounded-md focus-within:ring focus-within:ring-blue-600 divide-x divide-gray-300 h-[42px]"
   >
     <button
       on:click={() => {
