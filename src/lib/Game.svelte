@@ -37,48 +37,52 @@
 
   {#if $game.paused}
     <button
-      class="absolute z-50 inset-0 w-full bg-black/50 backdrop-blur-sm flex flex-col sm:flex-row gap-12 justify-center items-center"
+      class="absolute z-50 inset-0 w-full bg-black/50 backdrop-blur-sm"
       on:click={(e) => {
         e.stopPropagation();
         $game.paused = false;
       }}
       transition:fade={{ duration: 200 }}
-      on:introstart={() => document.body.classList.add("overflow-y-hidden")}
-      on:outrostart={() => document.body.classList.add("overflow-hidden")}
-      on:introend={() => document.body.classList.remove("overflow-y-hidden")}
-      on:outroend={() => document.body.classList.remove("overflow-y-hidden")}
     >
-      <button
-        class="bg-white aspect-square rounded-full flex items-center justify-center"
-        style="height: 15dvh;"
+      <div
+        class="flex flex-col sm:flex-row gap-12 justify-center items-center"
         transition:fly={{ y: 400, duration: 200 }}
-        on:click={() => {
-          eventDispatcher("exit");
+        on:animationstart={() => {
+          document.body.classList.add("overflow-hidden");
+          setTimeout(() => {
+            document.body.classList.remove("overflow-hidden");
+          }, 200);
         }}
       >
-        <Plus class="rotate-45 w-2/3 h-2/3 text-red-500" />
-      </button>
+        <button
+          class="bg-white aspect-square rounded-full flex items-center justify-center"
+          style="height: 15dvh;"
+          on:click={() => {
+            eventDispatcher("exit");
+          }}
+        >
+          <Plus class="rotate-45 w-2/3 h-2/3 text-red-500" />
+        </button>
 
-      <button
-        class="bg-white aspect-square rounded-full flex items-center justify-center"
-        style="height: 15dvh;"
-        on:click={() => {
-          game.reset();
-        }}
-        transition:fly={{ y: 400, duration: 200 }}
-      >
-        <Play class="w-1/2 h-1/2 text-green-500" />
-      </button>
-      <button
-        class="bg-white aspect-square rounded-full flex items-center justify-center"
-        style="height: 15dvh;"
-        on:click={() => {
-          game.reset();
-        }}
-        transition:fly={{ y: 400, duration: 200 }}
-      >
-        <Reset class="w-2/3 h-2/3 text-gray-800" />
-      </button>
+        <button
+          class="bg-white aspect-square rounded-full flex items-center justify-center"
+          style="height: 15dvh;"
+          on:click={() => {
+            game.reset();
+          }}
+        >
+          <Play class="w-1/2 h-1/2 text-green-500" />
+        </button>
+        <button
+          class="bg-white aspect-square rounded-full flex items-center justify-center"
+          style="height: 15dvh;"
+          on:click={() => {
+            game.reset();
+          }}
+        >
+          <Reset class="w-2/3 h-2/3 text-gray-800" />
+        </button>
+      </div>
     </button>
   {/if}
 
