@@ -43,6 +43,10 @@
         $game.paused = false;
       }}
       transition:fade={{ duration: 200 }}
+      on:introstart={() => document.body.classList.add("overflow-y-hidden")}
+      on:outrostart={() => document.body.classList.add("overflow-hidden")}
+      on:introend={() => document.body.classList.remove("overflow-y-hidden")}
+      on:outroend={() => document.body.classList.remove("overflow-y-hidden")}
     >
       <button
         class="bg-white aspect-square rounded-full flex items-center justify-center"
