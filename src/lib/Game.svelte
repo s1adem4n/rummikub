@@ -92,9 +92,3 @@
     <Pause class="w-1/2 h-1/2" />
   </button>
 </button>
-
-<style>
-  :global(body) {
-    overflow: hidden
-  }
-</style>
